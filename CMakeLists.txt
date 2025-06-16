@@ -41,6 +41,7 @@ add_executable(${PROJECT_NAME} ${SRCS})
 # header files
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/deps
 )
 
 file(GLOB_RECURSE HDRS CONFIGURE_DEPENDS
