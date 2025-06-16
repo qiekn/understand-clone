@@ -4,7 +4,6 @@ const int kScreenWidth = 800;
 const int kSreenHeight = 450;
 
 int main() {
-
   SetTraceLogLevel(LOG_WARNING);
 
   InitWindow(kScreenWidth, kSreenHeight, "game");
