@@ -10,7 +10,6 @@ enum class SceneId {
 
 class Scene {
 public:
-  Scene();
   Scene(SceneId scene_id);
   virtual ~Scene();
 

@@ -1,8 +1,6 @@
 #include "scene.h"
 #include <raylib.h>
 
-Scene::Scene() {}
-
 Scene::Scene(SceneId scene_id) : scene_id_(scene_id) {}
 
 Scene::~Scene() {}
