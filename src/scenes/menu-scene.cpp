@@ -1,5 +1,6 @@
 #include "menu-scene.h"
 #include <raylib.h>
+#include "font.h"
 #include "scene.h"
 
 MenuScene::MenuScene() : Scene(SceneId::kMenu) {}
@@ -35,7 +36,18 @@ void MenuScene::DrawFitToScreenMode() const {}
 
 void MenuScene::DrawFixedSizeMode() const {}
 
-void MenuScene::DrawUI() const {}
+void MenuScene::DrawUI() const {
+  // 绘制控制说明
+  const char* intro_text =
+      "wasd: move | space: toggle completion | z: toggle zoom mode | f5: save";
+  DrawTextEx(noto_italic, intro_text, (Vector2){10, 10}, 32, 1, BLACK);
+
+  // 绘制当前模式
+  const char* mode_text = (current_zoom_mode_ == ZoomMode::kFitToScreen)
+                              ? "Mode: Fit to Screen"
+                              : "Mode: Fixed Size";
+  DrawTextEx(noto_italic, mode_text, (Vector2){10, 40}, 32, 1, PINK);
+}
 
 void MenuScene::UpdateCamera() {}
 

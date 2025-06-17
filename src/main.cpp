@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include <memory>
+#include "font.h"
 #include "menu-scene.h"
 #include "scene-manager.h"
 #include "systems/render-system.h"
@@ -13,6 +14,7 @@ int main() {
   SetTargetFPS(144);
   SetTraceLogLevel(LOG_DEBUG);
 
+  LoadGlobalFonts();
   CONSTRUCT_SINGLETON(RenderSystem);
 
   SceneManager scene_manager;
