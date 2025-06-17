@@ -1,30 +1,32 @@
 #include <raylib.h>
-
-const int kScreenWidth = 800;
-const int kSreenHeight = 450;
+#include <memory>
+#include "menu-scene.h"
+#include "scene-manager.h"
+#include "systems/render-system.h"
+#include "utils/class-util.h"
 
 int main() {
-  SetTraceLogLevel(LOG_WARNING);
+  const int kScreenWidth = 1024;
+  const int kScreenHeight = 768;
 
-  InitWindow(kScreenWidth, kSreenHeight, "game");
+  InitWindow(kScreenWidth, kScreenHeight, "game");
+  SetTargetFPS(144);
+  SetTraceLogLevel(LOG_DEBUG);
 
-  SetTargetFPS(60);
+  CONSTRUCT_SINGLETON(RenderSystem);
+
+  SceneManager scene_manager;
+  scene_manager.Add(SceneId::kMenu, std::make_unique<MenuScene>());
+  scene_manager.Switch(SceneId::kMenu);
 
   while (!WindowShouldClose()) {
-    // Update
+    /* update */
+    scene_manager.Update();
 
-    // Draw
-    BeginDrawing();
-
-    ClearBackground(RAYWHITE);
-
-    DrawText("Congrats! You created your first window!", 190, 200, 20,
-             LIGHTGRAY);
-
-    EndDrawing();
+    /* draw */
+    scene_manager.Draw();
   }
 
   CloseWindow();
-
   return 0;
 }

@@ -1,6 +1,6 @@
-make -j10 -C build
+make -j10 -C build-win
 if ($lastexitcode -eq 0) {
-    ./build/game
+    ./build-win/game
 } else {
     Write-Host "Make failed"
 }

@@ -30,10 +30,14 @@ endif()
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
 
+set(CMAKE_BUILD_TYPE Debug)
+add_compile_options(-g -O0) # -g for debug symbols, -O0 to disable optimizations
+
 # source files
 file(GLOB_RECURSE SRCS CONFIGURE_DEPENDS
     "${CMAKE_SOURCE_DIR}/src/*.cpp"
 )
+message("Source files: ${SRCS}")
 
 # targets
 add_executable(${PROJECT_NAME} ${SRCS})
@@ -41,6 +45,11 @@ add_executable(${PROJECT_NAME} ${SRCS})
 # header files
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/include/core
+    ${CMAKE_SOURCE_DIR}/include/scenes
+    ${CMAKE_SOURCE_DIR}/include/systems
+    ${CMAKE_SOURCE_DIR}/include/managers
+    ${CMAKE_SOURCE_DIR}/include/utils
     ${CMAKE_SOURCE_DIR}/deps
 )
 
