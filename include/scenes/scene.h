@@ -2,6 +2,7 @@
 
 enum class SceneId {
   kNull,
+  kTest,
   kMenu,
   kPlay,
   kPause,
