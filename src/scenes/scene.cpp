@@ -5,9 +5,13 @@ Scene::Scene(SceneId scene_id) : scene_id_(scene_id) {}
 
 Scene::~Scene() {}
 
+void Scene::Start() {}
+
 void Scene::Update() {}
 
 void Scene::Draw() const {}
+
+void Scene::End() {}
 
 void Scene::OnEnter() { TraceLog(LOG_DEBUG, "Scene OnEnter"); }
 
