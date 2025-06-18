@@ -1,6 +1,7 @@
 #pragma once
 
 #include "scene.h"
+#include "ui.h"
 class TestScene : public Scene {
 public:
   TestScene();
@@ -11,4 +12,7 @@ private:
   void Draw() const override;
   void OnEnter() override;
   void OnExit() override;
+
+private:
+  UI ui_;
 };

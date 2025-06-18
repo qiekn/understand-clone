@@ -1,12 +1,16 @@
 #pragma once
 
+#include <vector>
+#include "button.h"
 class UI {
 public:
   UI();
   virtual ~UI();
 
-  void Draw();
+  void Update();
+  void Draw() const;
 
 private:
-  void DrawTopRightButtons();
+  void DrawTopRightButtons() const;
+  std::vector<Button> top_right_btns_;
 };
