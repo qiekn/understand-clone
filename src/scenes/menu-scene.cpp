@@ -171,7 +171,6 @@ void MenuScene::InitLevels() {
         Level level;
         level.x = grid["x"];
         level.y = grid["y"];
-        TraceLog(LOG_DEBUG, "read json level: %d %d", level.x, level.y);
         level.id = grid["id"];
         level.completed = grid.value("completed", false);
         // level.unlocked = grid.value("unlocked", false);
