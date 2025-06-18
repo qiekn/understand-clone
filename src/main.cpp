@@ -3,6 +3,7 @@
 #include "font.h"
 #include "menu-scene.h"
 #include "scene-manager.h"
+#include "scene.h"
 #include "systems/render-system.h"
 #include "test-scene.h"
 #include "utils/class-util.h"
@@ -17,6 +18,7 @@ int main() {
   SetConfigFlags(FLAG_MSAA_4X_HINT);
 
   LoadGlobalFonts();
+  InitAudioDevice();
   CONSTRUCT_SINGLETON(RenderSystem);
 
   SceneManager scene_manager;
@@ -24,14 +26,25 @@ int main() {
   scene_manager.Add(SceneId::kTest, std::make_unique<TestScene>());
   scene_manager.Switch(SceneId::kTest);
 
+  bool is_test = true;
+
   while (!WindowShouldClose()) {
     /* update */
     scene_manager.Update();
 
     /* draw */
     scene_manager.Draw();
+
+    if (IsKeyPressed(KEY_TAB)) {
+      if (!is_test)
+        scene_manager.Switch(SceneId::kTest);
+      else
+        scene_manager.Switch(SceneId::kMenu);
+      is_test = !is_test;
+    }
   }
 
   CloseWindow();
+  CloseAudioDevice();
   return 0;
 }
